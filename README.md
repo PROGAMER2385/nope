@@ -71,4 +71,4 @@ location / {
 `pm2 save`
 
 <h2>Need Help?</h2>
-Join our [Discord Support](https://discord.gg/neXYF47STz)
+Join our [Discord Support] (https://discord.gg/neXYF47STz)
