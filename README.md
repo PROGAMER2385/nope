@@ -21,7 +21,7 @@ Reliactyl Client Premium Version
 `apt install nginx`<br>
 `sudo apt install certbot`<br>
 `sudo apt install -y python3-certbot-nginx`
-```
+
 <h2>Webserver Config</h2>
 
 `systemctl start nginx`
