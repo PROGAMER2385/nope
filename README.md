@@ -1,4 +1,5 @@
-# Reliactyl-Premium
+![Reliactyl](https://cdn.discordapp.com/attachments/934699227488059422/940114124363431946/1644210052369.png)
+# Reliactyl
 Reliactyl Client Premium Version
 <hr>
 <h1>Features</h1>
