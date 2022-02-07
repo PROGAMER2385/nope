@@ -71,4 +71,4 @@ location / {
 `pm2 save`
 
 <h2>Need Help?</h2>
-Join our [Discord Support] (https://discord.gg/neXYF47STz)
+Join our [![Reliactyl](https://img.shields.io/badge/reliactyl-support%20server-7289da.svg)](https://discord.gg/neXYF47STz)
