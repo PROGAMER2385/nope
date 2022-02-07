@@ -14,19 +14,19 @@ Reliactyl Client Premium Version
 # Installination-Setup
 <h2>Installing Dependencies</h2>
 
-`sudo apt update && sudo apt upgrade`
-`curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -`
-`apt install nodejs`
-`npm -v`
-`apt install nginx`
-`sudo apt install certbot`
+`sudo apt update && sudo apt upgrade`<br>
+`curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -`<br>
+`apt install nodejs`<br>
+`npm -v`<br>
+`apt install nginx`<br>
+`sudo apt install certbot`<br>
 `sudo apt install -y python3-certbot-nginx`
 ```
 <h2>Webserver Config</h2>
 
 `systemctl start nginx`
-`certbot certonly --nginx -d your.domain`
-`nano /etc/nginx/sites-enabled/reliactyl.conf`
+`certbot certonly --nginx -d your.domain`<br>
+`nano /etc/nginx/sites-enabled/reliactyl.conf`<br>
 `# In reliactyl, paste this config and change the varible `
 ```Nginx
 server {
@@ -60,13 +60,13 @@ location / {
 ```
 <h2>Starting Reliactyl</h2>
 
-`1. Testing`
-`cd path/to/the/reliactyl`
-`node index.js`
+`1. Testing`<br>
+`cd path/to/the/reliactyl`<br>
+`node index.js`<br>
   
-`2. Production`
-`cd path/to/the/reliactyl`
-`npm install pm2 -g`
-`pm2 start index.js`
+`2. Production`<br>
+`cd path/to/the/reliactyl`<br>
+`npm install pm2 -g`<br>
+`pm2 start index.js`<br>
 `pm2 save`
 
