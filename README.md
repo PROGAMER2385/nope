@@ -13,7 +13,7 @@ Reliactyl Client Premium Version
 
 # Installination-Setup
 <h2>Installing Dependencies</h2>
-```
+```Bash
 sudo apt update && sudo apt upgrade
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -
 apt install nodejs
@@ -23,7 +23,7 @@ sudo apt install certbot
 sudo apt install -y python3-certbot-nginx
 ```
 <h2>Webserver Config</h2>
-```
+```Bash
 systemctl start nginx
 certbot certonly --nginx -d your.domain
 nano /etc/nginx/sites-enabled/reliactyl.conf
@@ -58,7 +58,8 @@ location / {
 }
 ```
 <h2>Starting Reliactyl</h2>
-```
+
+```Bash
 1. Testing
 cd path/to/the/reliactyl
 node index.js
