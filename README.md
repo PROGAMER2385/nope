@@ -60,11 +60,11 @@ location / {
 ```
 <h2>Starting Reliactyl</h2>
 
-`1. Testing`<br>
+1. Testing<br>
 `cd path/to/the/reliactyl`<br>
 `node index.js`<br>
   
-`2. Production`<br>
+2. Production<br>
 `cd path/to/the/reliactyl`<br>
 `npm install pm2 -g`<br>
 `pm2 start index.js`<br>
