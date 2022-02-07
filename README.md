@@ -17,9 +17,13 @@ Reliactyl Client Premium Version
 <h2>Installing Dependencies</h2>
 
 `sudo apt update && sudo apt upgrade`<br>
+`sudo apt install git`<br>
 `curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -`<br>
 `apt install nodejs`<br>
 `npm -v`<br>
+`git clone https://github.com/Reliactyl/Reliactyl.git`<br>
+`cd Reliactyl`<br>
+`npm install`<br>
 `apt install nginx`<br>
 `sudo apt install certbot`<br>
 `sudo apt install -y python3-certbot-nginx`
