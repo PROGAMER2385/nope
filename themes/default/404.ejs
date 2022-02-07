@@ -1,0 +1,625 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+
+
+
+
+  <link rel="icon" type="image/png" href="<%= extra.faviconlink %>"/>
+  <title><%= extra.error.title %></title>
+  <% if (settings.api.arcio.enabled == true) { %>
+      <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+  <% } %>
+  <script src="../../assets/reliactyl/assets/js/config.js"></script>
+    		<script src="../../assets/reliactyl/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+  <!-- ===============================================-->
+			<!--    Stylesheets-->
+			<!-- ===============================================-->
+			<link href="../../assets/reliactyl/vendors/choices/choices.min.css" rel="stylesheet">
+			<link href="../../assets/reliactyl/vendors/prism/prism-okaidia.css" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.gstatic.com">
+			<link
+				href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+				rel="stylesheet">
+			<link href="../../assets/reliactyl/vendors/overlayscrollbars/OverlayScrollbars.min.css" rel="stylesheet">
+			<link href="../../assets/reliactyl/assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
+			<link href="../../assets/reliactyl/assets/css/theme.min.css" rel="stylesheet" id="style-default">
+			<link href="../../assets/reliactyl/assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
+			<link href="../../assets/reliactyl/assets/css/user.min.css" rel="stylesheet" id="user-style-default">
+			<script>
+				var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+				if (isRTL) {
+					var linkDefault = document.getElementById('style-default');
+					var userLinkDefault = document.getElementById('user-style-default');
+					linkDefault.setAttribute('disabled', true);
+					userLinkDefault.setAttribute('disabled', true);
+					document.querySelector('html').setAttribute('dir', 'rtl');
+				} else {
+					var linkRTL = document.getElementById('style-rtl');
+					var userLinkRTL = document.getElementById('user-style-rtl');
+					linkRTL.setAttribute('disabled', true);
+					userLinkRTL.setAttribute('disabled', true);
+				}
+			</script>
+  
+  
+  
+<style>
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  background: linear-gradient(90deg, #2f3640 23%, #181b20 100%);
+}
+
+.moon {
+  background: linear-gradient(90deg, #d0d0d0 48%, #919191 100%);
+  position: absolute;
+  top: -100px;
+  left: -300px;
+  width: 900px;
+  height: 900px;
+  content: "";
+  border-radius: 100%;
+  box-shadow: 0px 0px 30px -4px rgba(0, 0, 0, 0.5);
+}
+
+.moon__crater {
+  position: absolute;
+  content: "";
+  border-radius: 100%;
+  background: linear-gradient(90deg, #7a7a7a 38%, #c3c3c3 100%);
+  opacity: 0.6;
+}
+
+.moon__crater1 {
+  top: 250px;
+  left: 500px;
+  width: 60px;
+  height: 180px;
+}
+
+.moon__crater2 {
+  top: 650px;
+  left: 340px;
+  width: 40px;
+  height: 80px;
+  transform: rotate(55deg);
+}
+
+.moon__crater3 {
+  top: -20px;
+  left: 40px;
+  width: 65px;
+  height: 120px;
+  transform: rotate(250deg);
+}
+
+.star {
+  background: grey;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  content: "";
+  border-radius: 100%;
+  transform: rotate(250deg);
+  opacity: 0.4;
+  animation-name: shimmer;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+.star1 {
+  top: 40%;
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.star2 {
+  top: 60%;
+  left: 90%;
+  animation-delay: 3s;
+}
+
+.star3 {
+  top: 10%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.star4 {
+  top: 90%;
+  left: 40%;
+}
+
+.star5 {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0.5s;
+}
+
+.error {
+  position: absolute;
+  left: 100px;
+  top: 400px;
+  transform: translateY(-60%);
+  font-family: "Righteous", cursive;
+  color: #363e49;
+}
+
+.error__title {
+  font-size: 10em;
+}
+
+.error__subtitle {
+  font-size: 2em;
+}
+
+.error__description {
+  opacity: 0.5;
+}
+
+.error__button {
+  min-width: 7em;
+  margin-top: 3em;
+  margin-right: 0.5em;
+  padding: 0.5em 2em;
+  outline: none;
+  border: 2px solid #2f3640;
+  background-color: transparent;
+  border-radius: 8em;
+  color: #576375;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  font-size: 0.75em;
+  font-family: "Righteous", cursive;
+}
+
+.error__button:hover {
+  color: #21252c;
+}
+
+.error__button--active {
+  background-color: #e67e22;
+  border: 2px solid #e67e22;
+  color: white;
+}
+
+.error__button--active:hover {
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.astronaut {
+  position: absolute;
+  width: 185px;
+  height: 300px;
+  left: 70%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(20deg) scale(1.2);
+}
+
+.astronaut__head {
+  background-color: white;
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  width: 60px;
+  height: 60px;
+  content: "";
+  border-radius: 2em;
+}
+
+.astronaut__head-visor-flare1 {
+  background-color: #7f8fa6;
+  position: absolute;
+  top: 28px;
+  left: 40px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  border-radius: 2em;
+  opacity: 0.5;
+}
+
+.astronaut__head-visor-flare2 {
+  background-color: #718093;
+  position: absolute;
+  top: 40px;
+  left: 38px;
+  width: 5px;
+  height: 5px;
+  content: "";
+  border-radius: 2em;
+  opacity: 0.3;
+}
+
+.astronaut__backpack {
+  background-color: #bfbfbf;
+  position: absolute;
+  top: 90px;
+  left: 47px;
+  width: 86px;
+  height: 90px;
+  content: "";
+  border-radius: 8px;
+}
+
+.astronaut__body {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 115px;
+  left: 55px;
+  width: 70px;
+  height: 80px;
+  content: "";
+  border-radius: 8px;
+}
+
+.astronaut__body__chest {
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 140px;
+  left: 68px;
+  width: 45px;
+  height: 25px;
+  content: "";
+  border-radius: 6px;
+}
+
+.astronaut__arm-left1 {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 127px;
+  left: 9px;
+  width: 65px;
+  height: 20px;
+  content: "";
+  border-radius: 8px;
+  transform: rotate(-30deg);
+}
+
+.astronaut__arm-left2 {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 102px;
+  left: 7px;
+  width: 20px;
+  height: 45px;
+  content: "";
+  border-radius: 8px;
+  transform: rotate(-12deg);
+  border-top-left-radius: 8em;
+  border-top-right-radius: 8em;
+}
+
+.astronaut__arm-right1 {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 113px;
+  left: 100px;
+  width: 65px;
+  height: 20px;
+  content: "";
+  border-radius: 8px;
+  transform: rotate(-10deg);
+}
+
+.astronaut__arm-right2 {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 78px;
+  left: 141px;
+  width: 20px;
+  height: 45px;
+  content: "";
+  border-radius: 8px;
+  transform: rotate(-10deg);
+  border-top-left-radius: 8em;
+  border-top-right-radius: 8em;
+}
+
+.astronaut__arm-thumb-left {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 110px;
+  left: 21px;
+  width: 10px;
+  height: 6px;
+  content: "";
+  border-radius: 8em;
+  transform: rotate(-35deg);
+}
+
+.astronaut__arm-thumb-right {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 90px;
+  left: 133px;
+  width: 10px;
+  height: 6px;
+  content: "";
+  border-radius: 8em;
+  transform: rotate(20deg);
+}
+
+.astronaut__wrist-left {
+  background-color: #e67e22;
+  position: absolute;
+  top: 122px;
+  left: 6.5px;
+  width: 21px;
+  height: 4px;
+  content: "";
+  border-radius: 8em;
+  transform: rotate(-15deg);
+}
+
+.astronaut__wrist-right {
+  background-color: #e67e22;
+  position: absolute;
+  top: 98px;
+  left: 141px;
+  width: 21px;
+  height: 4px;
+  content: "";
+  border-radius: 8em;
+  transform: rotate(-10deg);
+}
+
+.astronaut__leg-left {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 188px;
+  left: 50px;
+  width: 23px;
+  height: 75px;
+  content: "";
+  transform: rotate(10deg);
+}
+
+.astronaut__leg-right {
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 188px;
+  left: 108px;
+  width: 23px;
+  height: 75px;
+  content: "";
+  transform: rotate(-10deg);
+}
+
+.astronaut__foot-left {
+  background-color: white;
+  position: absolute;
+  top: 240px;
+  left: 43px;
+  width: 28px;
+  height: 20px;
+  content: "";
+  transform: rotate(10deg);
+  border-radius: 3px;
+  border-top-left-radius: 8em;
+  border-top-right-radius: 8em;
+  border-bottom: 4px solid #e67e22;
+}
+
+.astronaut__foot-right {
+  background-color: white;
+  position: absolute;
+  top: 240px;
+  left: 111px;
+  width: 28px;
+  height: 20px;
+  content: "";
+  transform: rotate(-10deg);
+  border-radius: 3px;
+  border-top-left-radius: 8em;
+  border-top-right-radius: 8em;
+  border-bottom: 4px solid #e67e22;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body>
+
+  <!-- ===============================================-->
+  <!--    Main Content-->
+  <!-- ===============================================-->
+  <main class="main" id="top">
+    <div class="container" data-layout="container">
+      <script>
+        var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+        if (isFluid) {
+          var container = document.querySelector('[data-layout]');
+          container.classList.remove('container');
+          container.classList.add('container-fluid');
+        }
+      </script>
+      <div class="row flex-center min-vh-100 py-6 text-center">
+        <div class="col-sm-10 col-md-8 col-lg-6 col-xxl-5"><a class="d-flex flex-center mb-4" href="/dashboard"><span class="font-sans-serif fw-bolder fs-5 d-inline-block"><%= extra.name %></span></a>
+          <div class="card">
+            <div class="card-body p-4 p-sm-5">
+              <div class="fw-black lh-1 text-300 fs-error">404</div>
+              <p class="lead mt-4 text-800 font-sans-serif fw-semi-bold w-md-75 w-xl-100 mx-auto">The page you're looking for is not found.</p>
+              <hr />
+              <p>Make sure the address is correct and that the page hasn't moved. If you think this is a mistake, <a href="supprt@reliactyl.xyz">contact us</a>.</p><a class="btn btn-primary btn-sm mt-3" href="/dashboard"><span class="fas fa-home me-2"></span>Take me home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- ===============================================-->
+  <!--    End of Main Content-->
+  <!-- ===============================================-->
+  <div class="offcanvas offcanvas-end settings-panel border-0" id="settings-offcanvas" tabindex="-1"
+	aria-labelledby="settings-offcanvas">
+	<div class="offcanvas-header settings-panel-header bg-shape">
+		<div class="z-index-1 py-1 light">
+			<h5 class="text-white"> <span class="fas fa-palette me-2 fs-0"></span>Settings</h5>
+			<p class="mb-0 fs--1 text-white opacity-75"> Set your own customized style</p>
+		</div>
+		<button class="btn-close btn-close-white z-index-1 mt-0" type="button" data-bs-dismiss="offcanvas"
+			aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body scrollbar-overlay px-card" id="themeController">
+		<h5 class="fs-0">Color Scheme</h5>
+		<p class="fs--1">Choose the perfect color mode for your app.</p>
+		<div class="btn-group d-block w-100 btn-group-navbar-style">
+			<div class="row gx-2">
+				<div class="col-6">
+					<input class="btn-check" id="themeSwitcherLight" name="theme-color" type="radio" value="light"
+						data-theme-control="theme" />
+					<label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherLight"> <span
+							class="hover-overlay mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0"
+								src="../../assets/reliactyl/assets/img/generic/falcon-mode-default.jpg"
+								alt="" /></span><span class="label-text">Light</span></label>
+				</div>
+				<div class="col-6">
+					<input class="btn-check" id="themeSwitcherDark" name="theme-color" type="radio" value="dark"
+						data-theme-control="theme" />
+					<label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherDark"> <span
+							class="hover-overlay mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0"
+								src="../../assets/reliactyl/assets/img/generic/falcon-mode-dark.jpg"
+								alt="" /></span><span class="label-text"> Dark</span></label>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="d-flex justify-content-between">
+			<div class="d-flex align-items-start"><img class="me-2"
+					src="../../assets/reliactyl/assets/img/icons/left-arrow-from-left.svg" width="20" alt="" />
+				<div class="flex-1">
+					<h5 class="fs-0">RTL Mode</h5>
+					<p class="fs--1 mb-0">Switch your language direction </p>
+				</div>
+			</div>
+			<div class="form-check form-switch">
+				<input class="form-check-input ms-0" id="mode-rtl" type="checkbox" data-theme-control="isRTL" />
+			</div>
+		</div>
+		<hr />
+		<div class="d-flex justify-content-between">
+			<div class="d-flex align-items-start"><img class="me-2"
+					src="../../assets/reliactyl/assets/img/icons/arrows-h.svg" width="20" alt="" />
+				<div class="flex-1">
+					<h5 class="fs-0">Fluid Layout</h5>
+					<p class="fs--1 mb-0">Toggle container layout system </p>
+				</div>
+			</div>
+			<div class="form-check form-switch">
+				<input class="form-check-input ms-0" id="mode-fluid" type="checkbox" data-theme-control="isFluid" />
+			</div>
+		</div>
+		<hr />
+		<hr />
+		<h5 class="fs-0 d-flex align-items-center">Vertical Navbar Style</h5>
+		<p class="fs--1 mb-0">Switch between styles for your vertical navbar </p>
+		<div class="btn-group d-block w-100 btn-group-navbar-style">
+			<div class="row gx-2">
+				<div class="col-6">
+					<input class="btn-check" id="navbar-style-transparent" type="radio" name="navbarStyle"
+						value="transparent" data-theme-control="navbarStyle" />
+					<label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-transparent"> <img
+							class="img-fluid img-prototype" src="../../assets/reliactyl/assets/img/generic/default.png"
+							alt="" /><span class="label-text"> Transparent</span></label>
+				</div>
+				<div class="col-6">
+					<input class="btn-check" id="navbar-style-inverted" type="radio" name="navbarStyle" value="inverted"
+						data-theme-control="navbarStyle" />
+					<label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-inverted"> <img
+							class="img-fluid img-prototype"
+							src="../../assets/reliactyl/assets/img/generic/inverted.png" alt="" /><span
+							class="label-text"> Inverted</span></label>
+				</div>
+				<div class="col-6">
+					<input class="btn-check" id="navbar-style-card" type="radio" name="navbarStyle" value="card"
+						data-theme-control="navbarStyle" />
+					<label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-card"> <img
+							class="img-fluid img-prototype" src="../../assets/reliactyl/assets/img/generic/card.png"
+							alt="" /><span class="label-text"> Card</span></label>
+				</div>
+				<div class="col-6">
+					<input class="btn-check" id="navbar-style-vibrant" type="radio" name="navbarStyle" value="vibrant"
+						data-theme-control="navbarStyle" />
+					<label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-vibrant"> <img
+							class="img-fluid img-prototype" src="../../assets/reliactyl/assets/img/generic/vibrant.png"
+							alt="" /><span class="label-text"> Vibrant</span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><a class="card setting-toggle" href="#settings-offcanvas" data-bs-toggle="offcanvas">
+	<div class="card-body d-flex align-items-center py-md-2 px-2 py-1">
+		<div class="bg-soft-primary position-relative rounded-start" style="height:34px;width:28px">
+			<div class="settings-popover"><span class="ripple"><span
+						class="fa-spin position-absolute all-0 d-flex flex-center"><span
+							class="icon-spin position-absolute all-0 d-flex flex-center">
+							<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M19.7369 12.3941L19.1989 12.1065C18.4459 11.7041 18.0843 10.8487 18.0843 9.99495C18.0843 9.14118 18.4459 8.28582 19.1989 7.88336L19.7369 7.59581C19.9474 7.47484 20.0316 7.23291 19.9474 7.03131C19.4842 5.57973 18.6843 4.28943 17.6738 3.20075C17.5053 3.03946 17.2527 2.99914 17.0422 3.12011L16.393 3.46714C15.6883 3.84379 14.8377 3.74529 14.1476 3.3427C14.0988 3.31422 14.0496 3.28621 14.0002 3.25868C13.2568 2.84453 12.7055 2.10629 12.7055 1.25525V0.70081C12.7055 0.499202 12.5371 0.297594 12.2845 0.257272C10.7266 -0.105622 9.16879 -0.0653007 7.69516 0.257272C7.44254 0.297594 7.31623 0.499202 7.31623 0.70081V1.23474C7.31623 2.09575 6.74999 2.8362 5.99824 3.25599C5.95774 3.27861 5.91747 3.30159 5.87744 3.32493C5.15643 3.74527 4.26453 3.85902 3.53534 3.45302L2.93743 3.12011C2.72691 2.99914 2.47429 3.03946 2.30587 3.20075C1.29538 4.28943 0.495411 5.57973 0.0322686 7.03131C-0.051939 7.23291 0.0322686 7.47484 0.242788 7.59581L0.784376 7.8853C1.54166 8.29007 1.92694 9.13627 1.92694 9.99495C1.92694 10.8536 1.54166 11.6998 0.784375 12.1046L0.242788 12.3941C0.0322686 12.515 -0.051939 12.757 0.0322686 12.9586C0.495411 14.4102 1.29538 15.7005 2.30587 16.7891C2.47429 16.9504 2.72691 16.9907 2.93743 16.8698L3.58669 16.5227C4.29133 16.1461 5.14131 16.2457 5.8331 16.6455C5.88713 16.6767 5.94159 16.7074 5.99648 16.7375C6.75162 17.1511 7.31623 17.8941 7.31623 18.7552V19.2891C7.31623 19.4425 7.41373 19.5959 7.55309 19.696C7.64066 19.7589 7.74815 19.7843 7.85406 19.8046C9.35884 20.0925 10.8609 20.0456 12.2845 19.7729C12.5371 19.6923 12.7055 19.4907 12.7055 19.2891V18.7346C12.7055 17.8836 13.2568 17.1454 14.0002 16.7312C14.0496 16.7037 14.0988 16.6757 14.1476 16.6472C14.8377 16.2446 15.6883 16.1461 16.393 16.5227L17.0422 16.8698C17.2527 16.9907 17.5053 16.9504 17.6738 16.7891C18.7264 15.7005 19.4842 14.4102 19.9895 12.9586C20.0316 12.757 19.9474 12.515 19.7369 12.3941ZM10.0109 13.2005C8.1162 13.2005 6.64257 11.7893 6.64257 9.97478C6.64257 8.20063 8.1162 6.74905 10.0109 6.74905C11.8634 6.74905 13.3792 8.20063 13.3792 9.97478C13.3792 11.7893 11.8634 13.2005 10.0109 13.2005Z"
+									fill="#2A7BE4"></path>
+							</svg></span></span></span></div>
+		</div><small
+			class="text-uppercase text-primary fw-bold bg-soft-primary py-2 pe-2 ps-1 rounded-end">customize</small>
+	</div>
+</a>
+<!-- ===============================================-->
+<!--    End of Main Content-->
+<!-- ===============================================-->
+<!-- ===============================================-->
+<!--    JavaScripts-->
+<!-- ===============================================-->
+<script src="../../assets/reliactyl/vendors/popper/popper.min.js"></script>
+<script src="../../assets/reliactyl/vendors/bootstrap/bootstrap.min.js"></script>
+<script src="../../assets/reliactyl/vendors/anchorjs/anchor.min.js"></script>
+<script src="../../assets/reliactyl/vendors/is/is.min.js"></script>
+<script src="../../assets/reliactyl/vendors/echarts/echarts.min.js"></script>
+<script src="../../assets/reliactyl/vendors/fontawesome/all.min.js"></script>
+<script src="../../assets/reliactyl/vendors/lodash/lodash.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+<script src="../../assets/reliactyl/vendors/list.js/list.min.js"></script>
+<script src="../../assets/reliactyl/assets/js/theme.js"></script>
+</body>
+
+</html>
+  
+
+</body>
+
+</html>
+ 
+
