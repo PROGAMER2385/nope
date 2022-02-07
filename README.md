@@ -24,7 +24,7 @@ Reliactyl Client Premium Version
 
 <h2>Webserver Config</h2>
 
-`systemctl start nginx`
+`systemctl start nginx`<br>
 `certbot certonly --nginx -d your.domain`<br>
 `nano /etc/nginx/sites-enabled/reliactyl.conf`<br>
 `# In reliactyl, paste this config and change the varible `
