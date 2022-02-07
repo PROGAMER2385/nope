@@ -13,6 +13,7 @@ Reliactyl Client Premium Version
 - User System (auth, regen password, profile)<br>
 - Join for Resources (join discord servers for resources)<br>
 - API (for bots & other things)<br>
+- Anti-ADBlock (BlockADBlock)<br>
 
 # Installination-Setup
 <h2>Installing Dependencies</h2>
