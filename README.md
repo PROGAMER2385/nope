@@ -1,6 +1,7 @@
+# Reliactyl
 ![Reliactyl](https://cdn.discordapp.com/attachments/917136625639763998/940137262824443914/IMG_20220207_154846.png)<br>
 ![Relaictyl2](https://cdn.discordapp.com/attachments/917136625639763998/940145423341998080/IMG_20220207_162150.png)
-# Reliactyl
+
 Reliactyl Client Premium Version
 <hr>
 <h1>Features</h1>
