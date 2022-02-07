@@ -70,5 +70,5 @@ location / {
 `pm2 start index.js`<br>
 `pm2 save`
 
-<h2>Need Help?</h2>
-Join our [![Reliactyl](https://img.shields.io/badge/reliactyl-support%20server-7289da.svg)](https://discord.gg/neXYF47STz)
+
+# Join our [![Reliactyl](https://img.shields.io/badge/reliactyl-support%20server-7289da.svg)](https://discord.gg/neXYF47STz)
